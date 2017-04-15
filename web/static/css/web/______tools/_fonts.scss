@@ -1,0 +1,30 @@
+@mixin font-stack($stack: body) {
+  @if (map-has-key($fonts, $stack)) {
+    $fontStack: map-get($fonts, $stack);
+    $final:"";
+    @each $font in $fontStack {
+      $i: index($fontStack, $font);
+      @if $i == 1 {
+        $final: $font;
+      } @else {
+        $final: $final, $font;
+      }
+    }
+    font-family: $final;
+  } @else {
+    @warn "Unknown font stack requested - stack = `#{$stack}`";
+    @return null;
+  }
+}
+
+@mixin font-size($size, $lineHeight: false) {
+  @if $size { font-size: $size; }
+  @if $lineHeight { line-height: $lineHeight; }
+}
+
+@mixin font($stack: false, $size: false, $lineHeight: false, $weight: false, $style: false) {
+  @include font-stack($stack);
+  @include font-size($size, $lineHeight);
+  @if $weight { font-weight: $weight; }
+  @if $style { font-style: $style; }
+}

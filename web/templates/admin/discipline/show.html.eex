@@ -1,0 +1,18 @@
+<h2>Show discipline</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @discipline.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @discipline.description %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: discipline_path(@conn, :edit, @discipline) %>
+<%= link "Back", to: discipline_path(@conn, :index) %>

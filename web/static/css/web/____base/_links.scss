@@ -1,0 +1,9 @@
+a {
+  color: color(dark, accent);
+  text-decoration: none;
+  @include transition(all 250ms ease-out);
+
+  &:hover {
+    color: color(dark, shade);
+  }
+}

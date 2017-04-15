@@ -1,0 +1,28 @@
+<h2>Listing disciplines</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for discipline <- @disciplines do %>
+    <tr>
+      <td><%= discipline.title %></td>
+      <td><%= discipline.description %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: discipline_path(@conn, :show, discipline), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: discipline_path(@conn, :edit, discipline), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: discipline_path(@conn, :delete, discipline), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New discipline", to: discipline_path(@conn, :new) %>

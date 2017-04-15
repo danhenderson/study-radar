@@ -1,0 +1,9 @@
+@if map-has-key($settings, box-sizing) {
+  @if (map-get($settings, box-sizing)) {
+    * {
+      @include box-sizing(border-box);
+    }
+  }
+} @else {
+  @warn "Settings variable not found - box-sizing";
+}

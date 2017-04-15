@@ -1,0 +1,15 @@
+.page__sidebar {
+  min-height: 100vh;
+  padding: 1rem 0;
+  background-color: color(light, shade);
+
+  .page__sidebar__title {
+    padding: 0 2rem 1rem;
+  }
+}
+
+.page__content {
+  min-height: 100vh;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

@@ -1,0 +1,27 @@
+.nav {
+  a {
+    display: block;
+    padding: 0.5rem 2em;
+    @include transition(all 500ms ease-out);
+    font-weight: 300;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.025);
+    }
+  }
+}
+
+.nav__sub {
+  margin-bottom: 0.5rem;
+}
+
+a.nav__category {
+  border-bottom: 1px solid rgba(0,0,0,0.025);
+  font-weight: 400;
+  cursor: default;
+  color: color(dark);
+
+  &:hover {
+    background-color: transparent;
+  }
+}

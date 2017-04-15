@@ -1,0 +1,24 @@
+<aside class="col-xs-3 page__sidebar">
+  <h2 class="h1 page__sidebar__title">Tech Radar</h2>
+  <nav>
+    <ul class="nav">
+      <%= for category <- @categories do %>
+        <li>
+          <a class="nav__category" href="#"><%= category.title %></a>
+          <ul class="nav__sub">
+            <%= for topic <- category.topics do %>
+              <%= case topic.rating do %>
+                <%= x when x > 80 -> %>
+                  <li><%= link topic.title, to: page_path(@conn, :topic, topic.discipline_id, topic), class: "marker marker--primary"  %></li>
+                <%= x when x > 40 -> %>
+                  <li><%= link topic.title, to: page_path(@conn, :topic, topic.discipline_id, topic), class: "marker marker--secondary"  %></li>
+                <%= x -> %>
+                  <li><%= link topic.title, to: page_path(@conn, :topic, topic.discipline_id, topic), class: "marker marker--tertiary"  %></li>
+              <%= end %>
+            <%= end %>
+          </ul>
+        </li>
+      <%= end %>
+    </ul>
+  </nav>
+</aside>

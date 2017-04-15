@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+
+    <%= render "sidebar.html", conn: @conn, categories: @categories %>
+
+    <div class="col-xs-9 page__content">
+      <div class="title">
+        <div>
+          <h1><%= @topic.title %></h1>
+          <ul class="breadcrumbs">
+            <li>
+              <%= link "Home", to: page_path(@conn, :index) %>
+            </li>
+            <li>
+              <%= link @topic.discipline.title, to: page_path(@conn, :topics, @topic.discipline) %>
+            </li>
+          </ul>
+        </div>
+        <%= case @topic.rating do %>
+          <%= x when x > 80 -> %>
+            <div class="status status--primary">
+              <div class="status__label">Master</div>
+              <div class="status__amount"><%= x %><span>%</span></div>
+            </div>
+          <%= x when x > 40 -> %>
+            <div class="status status--secondary">
+              <div class="status__label">Learn</div>
+              <div class="status__amount"><%= x %><span>%</span></div>
+            </div>
+          <%= x -> %>
+            <div class="status status--tertiary">
+              <div class="status__label">Monitor</div>
+              <div class="status__amount"><%= x %><span>%</span></div>
+            </div>
+        <%= end %>
+      </div>
+      <div class="intro">
+        <p><%= @topic.description %></p>
+      </div>
+    </div>
+  </div>
+</div>

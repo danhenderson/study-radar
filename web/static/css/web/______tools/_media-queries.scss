@@ -1,0 +1,19 @@
+@mixin mq-min($size) {
+  @if (map-has-key($media-queries, $size)) {
+    @media (min-width: #{map-get($media-queries, $size)}) {
+      @content
+    }
+  } @else {
+    @warn "Unknown media query requested - size = `#{$size}`";
+  }
+}
+
+@mixin mq-max($size) {
+  @if (map-has-key($media-queries, $size)) {
+    @media (max-width: #{map-get($media-queries, $size)}) {
+      @content
+    }
+  } @else {
+    @warn "Unknown media query requested - size = `#{$size}`";
+  }
+}

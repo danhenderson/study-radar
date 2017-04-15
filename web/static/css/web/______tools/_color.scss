@@ -1,0 +1,11 @@
+@function color($group, $variation: default) {
+  @if (map-has-key($colors, $group)) {
+    $groupColors: map-get($colors, $group);
+    @if (map-has-key($groupColors, $variation)) {
+      @return map-get($groupColors, $variation);
+    }
+  }
+
+  @warn "Unknown color requested - group = `#{$group}`, variation = `#{$variation}` ";
+  @return null;
+}

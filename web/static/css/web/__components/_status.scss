@@ -1,0 +1,23 @@
+.status {}
+
+.status--primary {
+  color: color(primary)
+}
+
+.status--secondary {
+  color: color(secondary)
+}
+
+.status--tertiary {
+  color: color(tertiary)
+}
+
+.status__label {
+  
+}
+
+.status__amount {
+  @include font-stack(head);
+  font-size: 3rem;
+  line-height: 1;
+}

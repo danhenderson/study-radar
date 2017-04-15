@@ -1,0 +1,3 @@
+body {
+  @include font(body, map-get($settings, font-size), 1.425, 300);
+}

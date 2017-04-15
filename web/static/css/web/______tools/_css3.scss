@@ -1,0 +1,101 @@
+@mixin vendor-prefix($property, $value) {
+  @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+    #{$vendor}#{$property}: #{$value};
+  }
+}
+
+@mixin background-gradient($startColor, $endColor) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(top, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(top, $startColor, $endColor);
+  background-image:      -o-linear-gradient(top, $startColor, $endColor);
+  background-image:         linear-gradient(top, $startColor, $endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+}
+
+@mixin background-horizontal($startColor, $endColor) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(left, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(left, $startColor, $endColor);
+  background-image:      -o-linear-gradient(left, $startColor, $endColor);
+  background-image:         linear-gradient(left, $startColor, $endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}', gradientType='1');
+}
+
+@mixin background-radial($startColor: #fff, $startPos: 0%, $endColor: #000, $endPos:100%) {
+  background: -moz-radial-gradient(center, ellipse cover, $startColor $startPos, $endColor $endPos);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop($startPos,$startColor), color-stop($endPos,$endColor));
+  background: -webkit-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+  background: -o-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+  background: -ms-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+  background: radial-gradient(ellipse at center, $startColor $startPos,$endColor $endPos);
+}
+
+@mixin background-size($size: cover) {
+  @include vendor-prefix(background-size, $size);
+}
+
+@mixin border-radius($radius) {
+  @include vendor-prefix('border-radius', $radius);
+}
+
+@mixin box-shadow($shadow) {
+  @include vendor-prefix('box-shadow', $shadow);
+}
+
+@mixin box-sizing($size: border-box) {
+  @include vendor-prefix(box-sizing, $size);
+}
+
+@mixin opacity($opacity: 0.5) {
+  $msOpacity: ($opacity * 100);
+  filter: alpha(opacity=$msOpacity);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $msOpacity + ")";
+  @include vendor-prefix('opacity', $opacity);
+}
+
+@mixin text-shadow($shadow) {
+  text-shadow: $shadow;
+}
+
+@mixin transform($params) {
+  @include vendor-prefix('transform', $params);
+}
+
+@mixin transform-origin($params) {
+  @include vendor-prefix('transform-origin', $params);
+}
+
+@mixin transform-style($style: preserve-3d) {
+  @include vendor-prefix('transform-style', $style);
+}
+
+@mixin transition($properties...) {
+  @include vendor-prefix('transition', $properties);
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  @include vendor-prefix('animation', $str);
+}

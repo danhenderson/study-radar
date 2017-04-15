@@ -1,0 +1,6 @@
+<h2>New discipline</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: discipline_path(@conn, :create) %>
+
+<%= link "Back", to: discipline_path(@conn, :index) %>

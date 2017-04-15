@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+
+    <%= render "sidebar.html", conn: @conn, categories: @categories %>
+
+    <div class="col-xs-9 page__content">
+      <h1><%= @discipline.title %></h1>
+      <ul class="breadcrumbs">
+        <li>
+          <%= link "Home", to: page_path(@conn, :index) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
