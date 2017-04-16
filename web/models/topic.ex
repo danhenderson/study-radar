@@ -16,7 +16,7 @@ defmodule Study.Topic do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :description, :category_id, :discipline_id])
+    |> cast(params, [:title, :description, :rating, :category_id, :discipline_id])
     |> validate_required([:title, :rating, :category_id, :discipline_id])
   end
 end
