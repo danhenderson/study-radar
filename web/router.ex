@@ -26,11 +26,13 @@ defmodule Study.Router do
   scope "/admin", Study do
     pipe_through [:browser, :with_session]
 
-    resources "/sessions", Admin.SessionController, only: [:new, :create, :delete]
+    get "/login", Admin.SessionController, :new
+    post "/login", Admin.SessionController, :create
+    delete "/login", Admin.SessionController, :delete
 
     scope "/" do
       pipe_through [:login_required]
-
+      get "/", Admin.DashboardController, :index
       resources "/categories", Admin.CategoryController
       resources "/disciplines", Admin.DisciplineController
       resources "/topics", Admin.TopicController

@@ -34,7 +34,7 @@ defmodule Study.Admin.SessionController do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "You’re now logged in!")
-        |> redirect(to: topic_path(conn, :index))
+        |> redirect(to: dashboard_path(conn, :index))
       {:error, _reason, conn} ->
         conn
         |> put_flash(:error, "Invalid email/password combination")
